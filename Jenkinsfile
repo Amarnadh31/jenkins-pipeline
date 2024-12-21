@@ -38,6 +38,11 @@ pipeline {
                 }
             }
         }
+        stage ('git_branch') {
+            when {
+                expression {env.GIT_BRANCH != 'origin/main'}
+            }
+        }
         stage('Example') {
             steps {
                 echo "Hello ${params.PERSON}"
