@@ -32,19 +32,14 @@ pipeline {
             }
         }
         stage('Deploy') { 
+            when {
+                    expression {env.GIT_BRANCH == 'origin/main'}
+                }
             steps {
                 script{
                     sh "echo hello world, this is Deploy stage"
                 }
             }
-        }
-        stage ('git_branch') {
-            steps{
-                 when {
-                    expression {env.GIT_BRANCH == 'origin/main'}
-                }
-            }
-           
         }
         stage('Example') {
             steps {
