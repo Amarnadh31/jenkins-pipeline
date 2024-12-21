@@ -41,7 +41,7 @@ pipeline {
         stage ('git_branch') {
             steps{
                  when {
-                    expression {env.GIT_BRANCH != 'origin/main'}
+                    expression {env.GIT_BRANCH == 'origin/main'}
                 }
             }
            
